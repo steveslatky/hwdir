@@ -19,17 +19,19 @@ def main():
 def new_assignment(class_dir):
     folders = listdir(class_dir)
     hw = []
+    count = 1
     if folders == []:
         makedirs(class_dir + "/hw1")
     else:
-        count = 1
         # Find how many assignemts are already in the folder
         for d in folders:
             if "hw" in d:
                 count += 1
-    new_ass = "hw" + count)
+    new_ass = "hw" + str(count)
     makedirs(class_dir + "/" + new_ass + "/submission")
     makedirs(class_dir + "/" + new_ass + "/given_material")
+    f =  open(class_dir + "/"+ new_ass + "/README.md" , 'w+')
+    f.write("Author: Stephen Slatky\n")
 
 
 def get_args():
