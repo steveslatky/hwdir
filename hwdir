@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+import argparse
+from os import listdir, makedirs
+
+#ROOT_DIR = "~/dev/classes/"
+ROOT_DIR = "/Users/stephenslatky/dev/classes/"
+
+
+def main():
+    args = get_args()
+    class_dir = ROOT_DIR + args.class_name
+
+    folders = listdir(ROOT_DIR)
+
+    if args.class_name not in folders:
+        makedirs(class_dir)
+
+    new_assignment(class_dir)
+
+
+def new_assignment(class_dir):
+    folders = listdir(class_dir)
+    hw = []
+    if folders == []:
+        makedirs(class_dir + "/hw1")
+    else:
+        for d in folders:
+            if "hw" in d:
+                hw.append(d)
+    new_ass = "hw" + str(len(hw) + 1)
+    makedirs(class_dir + "/" + new_ass + "/submission")
+    makedirs(class_dir + "/" + new_ass + "/given_material")
+
+
+
+
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("class_name", help="Class to create directory.")
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    main()
