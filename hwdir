@@ -3,9 +3,7 @@
 import argparse
 from os import listdir, makedirs
 
-#ROOT_DIR = "~/dev/classes/"
 ROOT_DIR = "/Users/stephenslatky/dev/classes/"
-
 
 def main():
     args = get_args()
@@ -15,7 +13,6 @@ def main():
 
     if args.class_name not in folders:
         makedirs(class_dir)
-
     new_assignment(class_dir)
 
 
@@ -25,19 +22,19 @@ def new_assignment(class_dir):
     if folders == []:
         makedirs(class_dir + "/hw1")
     else:
+        count = 1
+        # Find how many assignemts are already in the folder
         for d in folders:
             if "hw" in d:
-                hw.append(d)
-    new_ass = "hw" + str(len(hw) + 1)
+                count += 1
+    new_ass = "hw" + count)
     makedirs(class_dir + "/" + new_ass + "/submission")
     makedirs(class_dir + "/" + new_ass + "/given_material")
 
 
-
-
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("class_name", help="Class to create directory.")
+    parser.add_argument("class_name", help="Name of class to create directory.")
     return parser.parse_args()
 
 
