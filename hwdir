@@ -30,6 +30,7 @@ def new_assignment(class_dir):
     new_ass = "hw" + str(count)
     makedirs(class_dir + "/" + new_ass + "/submission")
     makedirs(class_dir + "/" + new_ass + "/given_material")
+    makedirs(class_dir + "/" + new_ass + "/work")
     f =  open(class_dir + "/"+ new_ass + "/README.md" , 'w+')
     f.write("Author: Stephen Slatky\n")
 
